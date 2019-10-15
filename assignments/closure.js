@@ -3,6 +3,31 @@
 // Keep it simple! Remember a closure is just a function
 // that manipulates variables defined in the outer scope.
 // The outer scope can be a parent function, or the top level of the script.
+const allTheClassics = [
+  { id: 1, name: "Alchemist" },
+  { id: 2, name: "Black Swan" },
+  { id: 3, name: "Harry Potter" }
+];
+
+function bookSearch(searchTerm, callback) {
+  let splittedName = searchTerm.split(" ");
+
+  return callback(splittedName);
+}
+
+function shelfCheck(bookNameArray) {
+  bookNameArray.map(item =>
+    allTheClassics.map(book => {
+      if (book.name.includes(item)) {
+        console.log(
+          `We have "${book.name}" that fits your search term "${item}".`
+        );
+      }
+    })
+  );
+}
+
+bookSearch("You", shelfCheck);
 
 
 /* STRETCH PROBLEMS, Do not attempt until you have completed all previous tasks for today's project files */
